@@ -1,0 +1,34 @@
+# Java & Build Artifacts
+target/
+backend/target/
+*.class
+*.jar
+*.war
+
+# Node & Package Managers
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+.npm/
+
+# Environment & Credentials
+.env
+.env.*
+*.env
+*.pem
+*.key
+
+# IDE & Editor Files
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.settings/
+.classpath
+.project
+
+# OS Generated Files
+.DS_Store
+Thumbs.db
