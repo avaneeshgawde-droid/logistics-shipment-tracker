@@ -81,11 +81,16 @@ public class SecurityConfig {
                 .filter(s -> !s.isEmpty())
                 .collect(java.util.stream.Collectors.toList());
 
-        if (origins.contains("*")) {
-            configuration.addAllowedOriginPattern("*");
-        } else {
-            configuration.setAllowedOrigins(origins);
+        for (String origin : origins) {
+            if (origin.equals("*") || origin.contains("*")) {
+                configuration.addAllowedOriginPattern(origin);
+            } else {
+                configuration.addAllowedOrigin(origin);
+            }
         }
+
+        // Always allow all Vercel domain patterns (*.vercel.app)
+        configuration.addAllowedOriginPattern("https://*.vercel.app");
 
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD"));
         configuration.setAllowedHeaders(List.of("Authorization", "Content-Type", "X-Requested-With"));
