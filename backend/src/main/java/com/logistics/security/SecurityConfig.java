@@ -48,8 +48,8 @@ public class SecurityConfig {
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
                 // Public endpoints
+                .requestMatchers("/", "/api/health", "/error").permitAll()
                 .requestMatchers("/api/auth/**").permitAll()
-                .requestMatchers("/api/health").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/shipments/*").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/shipments/*/history").permitAll()
 

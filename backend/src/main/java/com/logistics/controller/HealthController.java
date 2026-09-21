@@ -8,8 +8,8 @@ import java.util.Map;
 @RestController
 public class HealthController {
 
-    @GetMapping("/api/health")
+    @GetMapping({"/", "/api/health"})
     public Map<String, String> health() {
-        return Map.of("status", "UP", "service", "Shipment Tracker API");
+        return Map.of("status", "UP", "service", "Logistics & Shipment Tracker API", "version", "1.0.0");
     }
 }
